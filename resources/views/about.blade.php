@@ -1,0 +1,6 @@
+<x-layout meta-title="Home Title" meta-description="Home Description">
+
+<!-- @component('components.layout') -->
+<h1>Nosotros</h1>
+<!-- @endcomponent -->
+</x-layout>
