@@ -15,6 +15,6 @@
     <h3>Sidebar</h3>
     <div id="unico">{{ $sidebar }}</div>
 </div>
-@endif()
+@endif
 </body>
 </html>

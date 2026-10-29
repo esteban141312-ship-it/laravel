@@ -2,6 +2,7 @@
 
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\PostController;
+use App\Models\Post;
 
 // Route::get('/miblog',function(){
 // $posts = [
@@ -33,13 +34,8 @@ Route::view('/contact','contact')->name('contactanos');
 // Route::match(['put']);
 
 
-$posts = [
-    ['id' => 1, 'title' => 'Blog 1', 'body' => 'Este es el contenido del blog 1.'],
-    ['id' => 2, 'title' => 'Blog 2', 'body' => 'Este es el contenido del blog 2.'],
-];
-
-Route::get('/miblog', function () use ($posts) {
-    return view('blog.index', ['posts' => $posts, 'post' => null]);
+Route::get('/miblog', function () {
+    return view('posts.index', ['posts' => Post::all()]);
 })->name('blog');
 
-Route::get('/miblog/{id}', [PostController::class, 'show'])->name('posts.show');
+Route::get('/miblog/{post}', [PostController::class, 'show'])->name('posts.show');

@@ -1,28 +1,20 @@
 <?php
 namespace App\Http\Controllers;
 
+use App\Models\Post;
+
+
 class PostController extends Controller
 {
-    private array $posts = [
-        ['id' => 1, 'title' => 'Blog 1', 'body' => 'Este es el contenido del blog 1.'],
-        ['id' => 2, 'title' => 'Blog 2', 'body' => 'Este es el contenido del blog 2.'],
-    ];
-
     public function index()
     {
-        return view('blog', ['posts' => $this->posts]);
+        $posts = Post::get();
+
+        return view('blog.index', ['posts' => $posts]);
     }
 
-    public function show($id)
+    public function show(post $post)
     {
-        $post = null;
-
-        foreach ($this->posts as $item) {
-            if ($item['id'] == $id) {
-                $post = $item;
-            }
-        }
-
-        return view('blog.index', ['posts' => $this->posts, 'post' => $post]);
+       return view ('posts.show',['post'=> $post]);
     }
 }
